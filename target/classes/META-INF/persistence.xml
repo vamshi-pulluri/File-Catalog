@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
+
+    <persistence-unit name="fileCatalogPersistenceUnit">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>com.fjallid.maven.id1212.filecatalog.server.model.User</class>
+        <class>com.fjallid.maven.id1212.filecatalog.server.model.MetaFile</class>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/filecatalog"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.password" value="password"/>
+            <property name="javax.persistence.schema-generation.database.action" value="create"/>
+            <property name="eclipselink.logging.level" value="OFF"/>
+        </properties>
+    </persistence-unit>
+</persistence>

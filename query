@@ -1,0 +1,47 @@
+create table USER_FILE(
+userid number(4) primary key,
+username varchar(25) not null,
+password varchar(25) not null
+)
+
+insert into USER_FILE values(100,'srinath','phoenix');
+drop table USER_FILE
+
+create sequence userid_seq start with 100 increment by 1
+
+select userid_seq.nextval from dual
+
+insert into USER_FILE values('srinath','phoenix');
+select * from USER_FILE
+
+create table FILES_CATALOG(
+name varchar(25)primary key,
+sizes number(4),
+username varchar(25) not null,
+publicFile varchar(20)check(publicFile='true' or publicFile='false'),
+publicWrite varchar(20)check(publicWrite='true' or publicWrite='false'),
+publicRead varchar(20)check(publicRead='true' or publicRead='false')
+)
+insert into FILES_CATALOG values('testfile',100,'srinath','true','false','true');
+insert into FILES_CATALOG values('xxx',100,'srinath','true','false','true');
+insert into FILES_CATALOG values('xxx',100,'srinath','afad','dggg','fdge');
+update FILES_CATALOG set name=?,sizes=?,username=?,publicFile=?,publicWrite=?,publicRead=?
+drop table FILES_CATALOG;
+
+delete from FILES_CATALOG where name='test.txt'
+select FILES_CATALOG.name, FILES_CATALOG.sizes, FILES_CATALOG.publicFile, FILES_CATALOG.publicWrite,FILES_CATALOG.publicRead, USER_FILE.username FROM FILES_CATALOG, USER_FILE where USER_FILE.userid=100
+
+
+
+select FILES_CATALOG.name, FILES_CATALOG.sizes, FILES_CATALOG.publicFile, FILES_CATALOG.publicWrite,FILES_CATALOG.publicRead, USER_FILE.username FROM FILES_CATALOG, USER_FILE where USER_FILE.userid=100
+
+
+
+select * from FILES_CATALOG
+select FILES_CATALOG.name, FILES_CATALOG.sizes, FILES_CATALOG.publicFile, FILES_CATALOG.publicWrite,
+FILES_CATALOG.publicRead, USER_FILE.username FROM FILES_CATALOG, USER_FILE
+where FILES_CATALOG.username= USER_FILE.username and FILES_CATALOG.name='xxx';
+
+select FILES_CATALOG.name, FILES_CATALOG.sizes, FILES_CATALOG.publicFile, FILES_CATALOG.publicWrite,
+FILES_CATALOG.publicRead, USER_FILE.username FROM FILES_CATALOG, USER_FILE
+where USER_FILE.userid=100
